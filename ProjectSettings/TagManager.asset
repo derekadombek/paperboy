@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - NewsPaper
+  - Fire
+  - Dog
   layers:
   - Default
   - TransparentFX

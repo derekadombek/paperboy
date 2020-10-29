@@ -19,7 +19,7 @@ public class GameLogic : MonoBehaviour
     void Start()
     {
         scoreText = GetComponent<Text>();
-        //scoreText.text = score.ToString();
+        scoreText.text = "Score: " + score.ToString();
     }
     void Awake()
     {
@@ -35,7 +35,7 @@ public class GameLogic : MonoBehaviour
     public void AddScore(int _score)
     {
         score += _score;
-        scoreText.text = score.ToString();
+        scoreText.text = "Score: " + score.ToString();
     }
 
     public void LoseLife(Player player)

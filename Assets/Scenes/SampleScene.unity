@@ -2661,8 +2661,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 702.9, y: -446.5}
-  m_SizeDelta: {x: -1631.7806, y: -969.12866}
+  m_AnchoredPosition: {x: 596.6, y: -446.5}
+  m_SizeDelta: {x: -1419.0657, y: -969.12866}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1823274971
 MonoBehaviour:
@@ -2704,13 +2704,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 6
     m_MaxSize: 64
-    m_Alignment: 2
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 12345
+  m_Text: Paper Boy!
 --- !u!222 &1823274973
 CanvasRenderer:
   m_ObjectHideFlags: 0

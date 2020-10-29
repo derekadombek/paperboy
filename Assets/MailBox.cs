@@ -8,6 +8,12 @@ public class MailBox : MonoBehaviour
 
     bool wasHit;
 
+    GameLogic scoreBoard;
+    void Start()
+    {
+        scoreBoard = FindObjectOfType<GameLogic>();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (!wasHit)
@@ -16,7 +22,7 @@ public class MailBox : MonoBehaviour
             {
                 newsPaper.SetActive(true);
             }
-            GameLogic.instance.AddScore(1000);
+            scoreBoard.AddScore(1000);
         }
         wasHit = true;
     }

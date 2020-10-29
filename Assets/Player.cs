@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 
     public GameObject newsPaperPrefab;
     public GameObject spawnPoint;
-    float force = 40f;
+    float force = 35f;
 
     void Start()
     {
@@ -69,6 +69,24 @@ public class Player : MonoBehaviour
         {
             GameLogic.instance.LoseLife(this);
             other.gameObject.SetActive(false);
+        }
+
+        if (other.gameObject.tag == "Wall")
+        {
+            angles.y += rotation_speed * Time.deltaTime;
+            angles.y = Mathf.Clamp(angles.y, -30, 30);
+        }
+
+        if (other.gameObject.tag == "CornerWall")
+        {
+            angles.y += rotation_speed * Time.deltaTime;
+            angles.y = Mathf.Clamp(angles.y, -40, 40);
+        }
+
+        if (other.gameObject.tag == "WallRight")
+        {
+            angles.y -= rotation_speed * Time.deltaTime;
+            angles.y = Mathf.Clamp(angles.y, -30, 30);
         }
     }
 }

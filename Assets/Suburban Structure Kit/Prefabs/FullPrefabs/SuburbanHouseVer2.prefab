@@ -2305,6 +2305,35 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 2a0dbadad0fb6c64fad16389d9862637, type: 3}
+--- !u!54 &1866219977
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7390240905240083223}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1866219975
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7390240905240083223}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1866219976
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2357,35 +2386,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newsPaper: {fileID: 70206093472293055}
---- !u!54 &1866219977
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7390240905240083223}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &1866219975
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7390240905240083223}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7881129290749146024
 GameObject:
   m_ObjectHideFlags: 0
@@ -3070,6 +3070,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Newspaper
       objectReference: {fileID: 0}
+    - target: {fileID: 5588235063674363538, guid: 4241df2436653403b8281c0b9caf9075,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -22.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588235063674363538, guid: 4241df2436653403b8281c0b9caf9075,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588235063674363538, guid: 4241df2436653403b8281c0b9caf9075,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 44.77839
+      objectReference: {fileID: 0}
     - target: {fileID: 6721496718214491703, guid: 4241df2436653403b8281c0b9caf9075,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3128,7 +3143,7 @@ PrefabInstance:
     - target: {fileID: 6721496718214491703, guid: 4241df2436653403b8281c0b9caf9075,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.37329763
+      value: 0.41951188
       objectReference: {fileID: 0}
     - target: {fileID: 7390240904360976393, guid: 4241df2436653403b8281c0b9caf9075,
         type: 3}

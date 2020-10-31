@@ -8,12 +8,14 @@ public class Player : MonoBehaviour
     float min_speed = 5f;
     float max_speed = 30f;
     float rotation_speed = 100f;
+    int hitCount;
 
     Vector3 angles;
 
     public GameObject newsPaperPrefab;
     public GameObject spawnPoint;
-    float force = 35f;
+
+    float force = 30f;
 
     void Start()
     {
@@ -65,10 +67,26 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.tag == "FinishLine")
+        {
+            GameLogic.instance.EndLevel(this);
+            other.gameObject.SetActive(false);
+        }
+
         if (other.gameObject.tag == "Dog")
         {
-            GameLogic.instance.LoseLife(this);
+            LevelLife.instance.LoseLife(this, -1);
             other.gameObject.SetActive(false);
+        }
+
+        if (other.gameObject.tag == "Car")
+        {
+            //hitCount++;
+            //if (hitCount <= 1)
+            //{
+            LevelLife.instance.LoseLife(this, -2);
+            other.gameObject.SetActive(false);
+            //}
         }
 
         if (other.gameObject.tag == "Wall")

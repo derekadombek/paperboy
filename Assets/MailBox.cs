@@ -7,23 +7,30 @@ public class MailBox : MonoBehaviour
     public GameObject newsPaper;
 
     bool wasHit;
+    int scorePerHit = 5;
+    int hitCount;
 
-    GameLogic scoreBoard;
     void Start()
     {
-        scoreBoard = FindObjectOfType<GameLogic>();
-    }
 
-    private void OnCollisionEnter(Collision collision)
+    }
+    private void OnTriggerEnter(Collider other)
     {
-        if (!wasHit)
+        if (other.gameObject.tag == "NewsPaper")
         {
-            if(newsPaper != null)
+            hitCount++;
+            if (!wasHit)
             {
-                newsPaper.SetActive(true);
+                if (newsPaper != null)
+                {
+                    newsPaper.SetActive(true);
+                }
             }
-            scoreBoard.AddScore(1000);
+            wasHit = true;
+            if (hitCount <= 1)
+            {
+                GameLogic.instance.AddScore(scorePerHit);
+            }
         }
-        wasHit = true;
     }
 }

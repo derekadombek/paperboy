@@ -8,18 +8,15 @@ public class GameLogic : MonoBehaviour
 {
     public static GameLogic instance;
 
+    int level2TotalPoints = 15;
     int score = 0;
-    Text scoreText;
-    
-
-    const int max_papers = 10;
-    int current_paper_amount = 10;
+    //Text scoreText;
 
     int totalPoints = 20;
     // Start is called before the first frame update
     private void Start()
     {
-        scoreText = GetComponent<Text>();
+        Text scoreText = (Text)FindObjectOfType(typeof(Text));
         scoreText.text = "Balance: $" + score.ToString();
         instance = this;
     }
@@ -34,9 +31,24 @@ public class GameLogic : MonoBehaviour
     {
         
     }
+    public int LevelAmount()
+    {
+        int level2 = SceneManager.GetSceneByName("Level2").buildIndex;
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        if (currentSceneIndex == level2)
+        {
+            return level2TotalPoints;
+        }
+        else
+        {
+            return totalPoints;
+        }
+    }
 
     public void AddScore(int _score)
     {
+        Text scoreText = (Text)FindObjectOfType(typeof(Text));
         score += _score;
         scoreText.text = "Balance: $" + score.ToString();
         instance = this;
@@ -46,15 +58,17 @@ public class GameLogic : MonoBehaviour
     {
         player.enabled = false;
         print("end");
-        if(score < totalPoints)
+        if(score < GameLogic.instance.LevelAmount())
         {
             Won();
+            Text scoreText = (Text)FindObjectOfType(typeof(Text));
             scoreText.text = "You suck, start over!";
             instance = this;
         }
         else
         {
             Lose();
+            Text scoreText = (Text)FindObjectOfType(typeof(Text));
             scoreText.text = "Next Round!";
             instance = this;
         }
@@ -83,34 +97,5 @@ public class GameLogic : MonoBehaviour
         }
         print("Next Scene Index " + nextSceneIndex);
         SceneManager.LoadScene(nextSceneIndex);
-    }
-
-    //public void LoseLife(Player player, int lifeAmount)
-    //{
-    //    current_life += lifeAmount;
-    //    scoreText.text = "Life: " + current_life.ToString();
-    //    instance = this;
-    //    if (current_life == 0)
-    //    {
-    //        player.enabled = false;
-    //        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-    //        SceneManager.LoadScene(currentSceneIndex);
-    //        scoreText.text = "You Died!";
-    //        instance = this;
-    //    }
-    //}
-
-    public void SetNewsPaper(int amount)
-    {
-        current_paper_amount += amount;
-        if(current_paper_amount >= max_papers)
-        {
-            current_paper_amount = max_papers;
-        }
-    }
-
-    public int RequestPapers()
-    {
-        return current_paper_amount;
     }
 }

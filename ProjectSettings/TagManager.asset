@@ -12,6 +12,8 @@ TagManager:
   - CornerWall
   - FinishLine
   - Car
+  - Sign
+  - Tree
   layers:
   - Default
   - TransparentFX

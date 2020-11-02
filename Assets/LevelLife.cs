@@ -9,12 +9,12 @@ public class LevelLife : MonoBehaviour
     public static LevelLife instance;
 
     Text levelLife;
-    int current_life = 5;
+    double current_life = 6;
     // Start is called before the first frame update
     void Start()
     {
         levelLife = GetComponent<Text>();
-        levelLife.text = "Life: " + current_life.ToString();
+        levelLife.text = "Life: " + current_life.ToString("F2");
         instance = this;
     }
 
@@ -28,10 +28,10 @@ public class LevelLife : MonoBehaviour
     {
         
     }
-    public void LoseLife(Player player, int lifeAmount)
+    public void LoseLife(Player player, double lifeAmount)
     {
         current_life += lifeAmount;
-        levelLife.text = "Life: " + current_life.ToString();
+        levelLife.text = "Life: " + current_life.ToString("F2");
         instance = this;
         if (current_life == 0)
         {

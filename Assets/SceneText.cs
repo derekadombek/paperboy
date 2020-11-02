@@ -13,7 +13,7 @@ public class SceneText : MonoBehaviour
     void Start()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        int level = currentSceneIndex + 1;
+        int level = currentSceneIndex;
         sceneText = GetComponent<Text>();
         sceneText.text = "Level: " + level.ToString();
         instance = this;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -40,13 +41,13 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             angles.y -= rotation_speed * Time.deltaTime;
-            angles.y = Mathf.Clamp(angles.y, -30, 30);
+            angles.y = Mathf.Clamp(angles.y, -45, 45);
         }
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
             angles.y += rotation_speed * Time.deltaTime;
-            angles.y = Mathf.Clamp(angles.y, -30, 30);
+            angles.y = Mathf.Clamp(angles.y, -45, 45);
         }
 
         transform.rotation = Quaternion.Euler(angles);
@@ -54,13 +55,13 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             //enough?
-            if(GameLogic.instance.RequestPapers() > 0)
+            if(PaperCountText.instance.RequestPapers() > 0)
             {
                 GameObject news = Instantiate(newsPaperPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
                 Rigidbody rb = news.GetComponent<Rigidbody>();
                 rb.AddForce(spawnPoint.transform.forward * force, ForceMode.Impulse);
                 rb.AddTorque(new Vector3(0, Random.Range(0, 180), 0));
-                GameLogic.instance.SetNewsPaper(-1);
+                PaperCountText.instance.SetNewsPaper(-1);
             }
         }
     }
@@ -79,13 +80,35 @@ public class Player : MonoBehaviour
             other.gameObject.SetActive(false);
         }
 
+        if (other.gameObject.tag == "Tree")
+        {
+            LevelLife.instance.LoseLife(this, -1);
+            other.gameObject.SetActive(false);
+        }
+
+        if (other.gameObject.tag == "Sign")
+        {
+            LevelLife.instance.LoseLife(this, -.50);
+            other.gameObject.SetActive(false);
+        }
+
         if (other.gameObject.tag == "Car")
         {
             //hitCount++;
             //if (hitCount <= 1)
             //{
-            LevelLife.instance.LoseLife(this, -2);
-            other.gameObject.SetActive(false);
+            int level2 = SceneManager.GetSceneByName("Level2").buildIndex;
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            if (currentSceneIndex == level2)
+            {
+                GameLogic.instance.EndLevel(this);
+                other.gameObject.SetActive(false);
+            }
+            else
+            {
+                LevelLife.instance.LoseLife(this, -2);
+                other.gameObject.SetActive(false);
+            }
             //}
         }
 
